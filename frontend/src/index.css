@@ -50,3 +50,27 @@
   -webkit-text-fill-color: #fff !important; /* text white */
   transition: background-color 9999s ease-in-out 0s;
 }
+
+.swiper {
+  padding-bottom: 50px;
+}
+
+.swiper-pagination {
+  position: relative !important;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.swiper-pagination-bullet {
+  width: 13px !important;
+  height: 13px !important;
+  background: #5e6369 !important;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--color-primary) !important;
+  width: 13px !important;
+  height: 13px !important;
+}
