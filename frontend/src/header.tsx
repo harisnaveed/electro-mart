@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import {
   faCartShopping,
-  faHeart,
   faBars,
   faXmark,
   faMagnifyingGlass,

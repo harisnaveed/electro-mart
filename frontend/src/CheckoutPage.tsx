@@ -85,7 +85,7 @@ export default function CheckoutPage() {
     try {
       setLoading(true);
       const res = await fetch(
-        "http://localhost/stripe-endpoint/create-checkout-session.php",
+        "https://widget.boostmyrepair.com/southchase/myrepairapp/create-checkout-session.php",
         {
           method: "POST",
           headers: {

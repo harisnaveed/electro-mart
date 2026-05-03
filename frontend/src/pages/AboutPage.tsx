@@ -54,7 +54,7 @@ export default function AboutPage() {
           <button
             type="button"
             onClick={() => navigate("/contact")}
-            class="mt-5 inline-flex h-11 cursor-pointer items-center justify-center rounded-xl bg-primary px-6 text-sm font-extrabold text-white shadow-sm transition hover:bg-secondary"
+            className="mt-5 inline-flex h-11 cursor-pointer items-center justify-center rounded-xl bg-primary px-6 text-sm font-extrabold text-white shadow-sm transition hover:bg-secondary"
           >
             Contact Us
           </button>
