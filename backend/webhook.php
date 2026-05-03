@@ -4,10 +4,12 @@ require 'Database.php';
 require 'Order.php';
 require 'vendor/autoload.php';
 
-\Stripe\Stripe::setApiKey('sk_test_xxx');
+
 
 $stripe_secret_key = $_ENV['STRIPE_SECRET_KEY'];
 $endpoint_secret = $_ENV['END_POINT_SECRET'];
+
+\Stripe\Stripe::setApiKey($stripe_secret_key);
 
 // Get raw payload
 $payload = @file_get_contents('php://input');
