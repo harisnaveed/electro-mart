@@ -1,0 +1,12 @@
+# Node
+node_modules/
+build/
+.env
+
+# PHP
+/vendor/
+.env
+
+# OS
+.DS_Store
+Thumbs.db
