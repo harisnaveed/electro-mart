@@ -2,7 +2,16 @@
 
 A modern full-stack eCommerce web application built with **React 19 (Vite + TypeScript)** and **Core PHP**, featuring product syncing from CRM, secure Stripe payments, and a clean responsive UI powered by Tailwind CSS.
 
+## 📖 About the Project
+
+Electro Mart was built to simulate a real-world eCommerce system with CRM integration and secure payment processing. The goal was to create a scalable and production-ready architecture using modern frontend and backend technologies.
+
 ---
+
+![React](https://img.shields.io/badge/React-19-blue)
+![PHP](https://img.shields.io/badge/PHP-Core-blueviolet)
+![Stripe](https://img.shields.io/badge/Payments-Stripe-purple)
+![Tailwind](https://img.shields.io/badge/TailwindCSS-v4-38B2AC)
 
 ## 🚀 Features
 
@@ -46,6 +55,38 @@ electro-mart/
 - Core PHP
 - MySQL / PostgreSQL
 - REST APIs
+
+## 🔐 Environment Management
+
+This project uses **vlucas/phpdotenv** to securely manage environment variables in the backend.
+
+### Why it's used:
+
+- Keeps sensitive data like API keys secure
+- Prevents exposing secrets in source code
+- Makes the project production-ready
+
+### Example `.env` file:
+
+```env
+STRIPE_SECRET_KEY=your_stripe_secret_key
+DB_USER_NAME=your_database_user
+DB_USER_PASSWORD=your_database_password
+```
+
+### Usage in PHP:
+
+```php
+require __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$stripe_secret = $_ENV['STRIPE_SECRET_KEY'];
+```
+
+⚠️ **Important:**
+The `.env` file is ignored using `.gitignore` and should never be pushed to GitHub.
 
 ### Payment Integration
 
@@ -153,6 +194,26 @@ DB_USER_PASSWORD=your_db_password
 ---
 
 ## 📸 Screenshots
+
+### 🏠 Hero Section
+
+![Hero Section](screenshots/hero-section.png)
+
+### 📂 Categories
+
+![Categories](screenshots/categories.png)
+
+### 📦 Inventory
+
+![Inventory](screenshots/inventory.png)
+
+### 🛒 Cart
+
+![Cart](screenshots/cart.png)
+
+### 📩 Contact Newsletter
+
+![Contact Newsletter](screenshots/contact-newsletter.png)
 
 ---
 
