@@ -105,7 +105,7 @@ Products are dynamically fetched from MyRepairApp CRM:
 ### 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/your-username/electro-mart.git
+git clone https://github.com/harisnaveed/electro-mart.git
 cd electro-mart
 ```
 
