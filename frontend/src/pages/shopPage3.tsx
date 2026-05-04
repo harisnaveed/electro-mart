@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import { useCart } from "../CartContext";
 import { useCartUi } from "../CartUiContext";
 import SEO from "../components/SEO";
-import ProductCard from "../components/ProductCard";
 
 type Product = {
   id: string | number;
@@ -277,10 +276,7 @@ export default function Shop() {
       <div>
         <div className="mb-6 flex flex-col gap-1">
           <p className="text-sm text-zinc-600 dark:text-gray-400">
-            API:{" "}
-            <span className="font-mono text-[13px]">
-              {PRODUCTS_URL} {loading}
-            </span>
+            API: <span className="font-mono text-[13px]">{PRODUCTS_URL}</span>
           </p>
           <p className="text-sm text-zinc-600 dark:text-gray-400">
             Showing{" "}
@@ -386,13 +382,109 @@ export default function Shop() {
           <div className="min-h-screen p-6">
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {paginated.map((p) => (
-                <ProductCard
+                <article
                   key={p.id}
-                  product={p}
-                  addToCart={addToCart}
-                  setToast={setToast}
-                  formatPrice={formatPrice}
-                />
+                  className="
+          relative group rounded-3xl p-5
+          backdrop-blur-xl bg-white/40 dark:bg-white/5
+          border border-white/20 dark:border-white/10
+
+          shadow-[10px_10px_25px_rgba(0,0,0,0.08),-10px_-10px_25px_rgba(255,255,255,0.6)]
+          dark:shadow-[8px_8px_20px_rgba(0,0,0,0.6),-6px_-6px_16px_rgba(255,255,255,0.05)]
+
+          transition-all duration-300 ease-out
+          hover:-translate-y-2 hover:scale-[1.02]
+          hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)]
+        "
+                >
+                  {/* Glow effect */}
+                  <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-tr from-purple-400/20 via-transparent to-orange-300/20 blur-xl"></div>
+
+                  {/* Floating Image */}
+                  {p.image && (
+                    <div className="relative flex justify-center mb-4">
+                      <img
+                        src={p.image}
+                        alt={p.title}
+                        className="
+                h-28 object-contain
+                transition-all duration-500
+                group-hover:-translate-y-3 group-hover:scale-105
+                drop-shadow-[0_10px_20px_rgba(0,0,0,0.25)]
+              "
+                      />
+                    </div>
+                  )}
+
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <div className="flex justify-between gap-3">
+                      <h2 className="text-sm font-semibold leading-5 line-clamp-2 text-gray-800 dark:text-gray-100">
+                        {p.title}
+                      </h2>
+
+                      <p className="text-sm font-semibold text-gray-900 dark:text-white">
+                        {formatPrice(p.price)}
+                      </p>
+                    </div>
+
+                    {p.category && (
+                      <p className="mt-1 text-xs text-gray-500">{p.category}</p>
+                    )}
+
+                    {/* Tags */}
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {[p.manufacturer, p.type]
+                        .filter(Boolean)
+                        .map((tag, i) => (
+                          <span
+                            key={i}
+                            className="
+                  text-xs px-2 py-1 rounded-full
+                  bg-white/50 dark:bg-white/10
+                  backdrop-blur-md
+                  border border-white/20
+                "
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                    </div>
+
+                    {p.description && (
+                      <p className="mt-3 text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+                        {p.description}
+                      </p>
+                    )}
+
+                    {/* Button */}
+                    <button
+                      onClick={() => {
+                        addToCart(p);
+                        setToast(`${p.title} added to cart`);
+                        setTimeout(() => setToast(""), 2000);
+                      }}
+                      className="
+              mt-5 w-full py-2.5 rounded-xl text-sm font-medium
+
+              bg-gradient-to-r from-purple-500 to-orange-400
+              text-white
+
+              shadow-lg shadow-purple-500/20
+              transition-all duration-300
+
+              hover:shadow-xl hover:shadow-purple-500/30
+              hover:scale-[1.03]
+
+              active:scale-95
+
+              cursor-pointer
+            "
+                    >
+                      🛒 Add to cart
+                    </button>
+                  </div>
+                </article>
               ))}
             </div>
           </div>

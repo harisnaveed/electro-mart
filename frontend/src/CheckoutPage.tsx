@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import SEO from "./components/SEO";
+import InputField from "./components/InputField";
+import TextareaField from "./components/TextareaField";
 
 export default function CheckoutPage() {
   const navigate = useNavigate();
@@ -134,46 +136,50 @@ export default function CheckoutPage() {
             <h2 className="text-lg font-semibold">Shipping Details</h2>
 
             {/* NAME */}
-            <input
+            <InputField
+              label="Full Name"
               name="name"
               value={form.name}
               onChange={handleChange}
               placeholder="Full Name"
-              className="w-full border rounded-lg px-3 py-2 text-sm dark:bg-gray-900 dark:text-zinc-500 dark:ring-zinc-800 dark:focus:border-gray-700"
+              required
             />
             {errors.name && (
               <p className="text-red-500 text-sm">{errors.name}</p>
             )}
 
             {/* EMAIL */}
-            <input
+            <InputField
+              label="Email"
               name="email"
               value={form.email}
               onChange={handleChange}
               placeholder="Email"
-              className="w-full border rounded-lg px-3 py-2 text-sm dark:bg-gray-900 dark:text-zinc-500 dark:ring-zinc-800 dark:focus:border-gray-700"
+              required
             />
             {errors.email && (
               <p className="text-red-500 text-sm">{errors.email}</p>
             )}
             {/* PHONE */}
-            <input
+            <InputField
+              label="Phone"
               name="phone"
               value={form.phone}
               onChange={handleChange}
-              placeholder="Phone"
-              className="w-full border rounded-lg px-3 py-2 text-sm dark:bg-gray-900 dark:text-zinc-500 dark:ring-zinc-800 dark:focus:border-gray-700"
+              placeholder="Your Phone"
+              required
             />
             {errors.phone && (
               <p className="text-red-500 text-sm">{errors.phone}</p>
             )}
             {/* ADDRESS */}
-            <textarea
+            <TextareaField
+              label="Address"
               name="address"
               value={form.address}
               onChange={handleChange}
-              placeholder="Address"
-              className="w-full border rounded-lg px-3 py-2 text-sm dark:bg-gray-900 dark:text-zinc-500 dark:ring-zinc-800 dark:focus:outline-gray-700"
+              placeholder="Your Address"
+              required
             />
             {errors.address && (
               <p className="text-red-500 text-sm">{errors.address}</p>

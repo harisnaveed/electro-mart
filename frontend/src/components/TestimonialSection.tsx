@@ -3,6 +3,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import { Pagination } from "swiper/modules";
+import Card from "./Card";
 
 export default function TestimonialSection() {
   const testimonials = [
@@ -60,7 +61,7 @@ export default function TestimonialSection() {
         >
           {testimonials.map((t, i) => (
             <SwiperSlide key={i}>
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border h-full dark:border-gray-700">
+              <Card className="h-auto lg:h-[200px]">
                 {/* Stars */}
                 <div className="flex text-primary text-sm mb-3">
                   {"★★★★★".split("").map((_, i) => (
@@ -87,7 +88,7 @@ export default function TestimonialSection() {
                     <p className="text-xs text-gray-500">{t.role}</p>
                   </div>
                 </div>
-              </div>
+              </Card>
             </SwiperSlide>
           ))}
         </Swiper>

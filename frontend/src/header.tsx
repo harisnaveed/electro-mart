@@ -4,6 +4,8 @@ import { useCartUi } from "./CartUiContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import PremiumButton from "./components/PremiumButton";
+import { useNavigate } from "react-router-dom";
 import {
   faCartShopping,
   faBars,
@@ -26,6 +28,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const [dark, setDark] = useState(false);
+  const navigate = useNavigate();
 
   const breadcrumb = useMemo(() => {
     const parts = location.pathname.split("/").filter(Boolean);
@@ -130,12 +133,15 @@ export default function Header() {
             )}
           </button>
 
-          <NavLink
-            to="/shop"
-            className="h-10 items-center justify-center rounded-lg bg-primary px-4 text-sm font-semibold text-white transition hover:bg-secondary cursor-pointer hidden sm:inline-flex"
+          <PremiumButton
+            className="items-center justify-center rounded-xl px-6 text-sm h-11 font-extrabold text-white hidden sm:inline-flex"
+            onClick={() => {
+              setIsMenuOpen(false);
+              navigate("/shop");
+            }}
           >
             Get Started
-          </NavLink>
+          </PremiumButton>
           <button className="cursor-pointer" onClick={toggle}>
             {dark ? "☀️" : "🌙"}
           </button>
@@ -193,13 +199,15 @@ export default function Header() {
                     </span>
                   )}
                 </button>
-                <NavLink
-                  to="/shop"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="ml-auto inline-flex h-10 items-center justify-center rounded-lg bg-primary px-4 text-sm font-semibold text-white transition hover:bg-secondary"
+                <PremiumButton
+                  className="inline-flex items-center justify-center rounded-xl px-6 text-sm h-11 font-extrabold text-white"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    navigate("/shop");
+                  }}
                 >
                   Get Started
-                </NavLink>
+                </PremiumButton>
               </div>
 
               <div className="mt-5 grid gap-2">

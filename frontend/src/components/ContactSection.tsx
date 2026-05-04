@@ -5,7 +5,29 @@ import {
   faInstagram,
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
+import InputField from "./InputField";
+import TextareaField from "./TextareaField";
+import PremiumButton from "./PremiumButton";
 function ContactSection() {
+  const businessPhone = import.meta.env.VITE_PHONE;
+  const businessEmail = import.meta.env.VITE_EMAIL;
+  const businessAddress = import.meta.env.VITE_MAP_ADDRESS;
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      message: formData.get("message"),
+    };
+
+    console.log(data);
+
+    // 👉 send to API here
+  };
   return (
     <section className="mt-10 dark:bg-gray-900 dark:text-white mb-5">
       <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
@@ -19,19 +41,15 @@ function ContactSection() {
             <div className="text-sm font-semibold text-white/80 dark:text-gray-400">
               Address
             </div>
-            <div className="mt-2 text-sm font-semibold">
-              24K Royal, Mesa,
-              <br />
-              New Jersey 45
-            </div>
+            <div className="mt-2 text-sm font-semibold">{businessAddress}</div>
 
             <div className="mt-6 text-sm font-semibold text-white/80 dark:text-gray-400">
               Contact
             </div>
             <div className="mt-2 text-sm font-semibold">
-              +92 300 000 0000
+              {businessPhone}
               <br />
-              support@myrepair.com
+              {businessEmail}
             </div>
 
             <div className="mt-6 text-sm font-semibold text-white/80 dark:text-gray-400">
@@ -69,53 +87,45 @@ function ContactSection() {
           <h3 className="mt-2 text-3xl font-extrabold tracking-tight text-secondary dark:bg-gray-900 dark:text-white">
             Get Your Free Quote Today!
           </h3>
+          <form onSubmit={handleSubmit}>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <div>
+                <InputField
+                  label="Your Name"
+                  name="name"
+                  placeholder="Enter your name"
+                  required
+                />
+              </div>
+              <div>
+                <InputField
+                  label="Email"
+                  name="email"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+              <div className="sm:col-span-2">
+                <InputField
+                  label="Phone"
+                  name="phone"
+                  placeholder="Enter phone number"
+                  required
+                />
+              </div>
+              <div className="sm:col-span-2">
+                <TextareaField
+                  label="Your Message"
+                  name="message"
+                  placeholder="Write here..."
+                />
+              </div>
+            </div>
 
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            <div>
-              <label className="text-xs font-semibold text-secondary dark:bg-gray-900 dark:text-gray-400">
-                Your Name *
-              </label>
-              <input
-                className="mt-2 h-11 w-full rounded-xl bg-zinc-50 px-4 text-sm font-semibold text-zinc-900 outline-none ring-1 ring-zinc-200 focus:ring-2 focus:ring-orange-300 dark:bg-gray-900 dark:text-zinc-500 dark:ring-zinc-800 dark:focus:ring-gray-700"
-                placeholder="Enter your name"
-              />
-            </div>
-            <div>
-              <label className="text-xs font-semibold text-secondary dark:bg-gray-900 dark:text-gray-400">
-                Email *
-              </label>
-              <input
-                type="email"
-                className="mt-2 h-11 w-full rounded-xl bg-zinc-50 px-4 text-sm font-semibold text-zinc-900 outline-none ring-1 ring-zinc-200 focus:ring-2 focus:ring-orange-300 dark:bg-gray-900 dark:text-zinc-500 dark:ring-zinc-800 dark:focus:ring-gray-700"
-                placeholder="Enter email"
-              />
-            </div>
-            <div className="sm:col-span-2">
-              <label className="text-xs font-semibold text-secondary dark:bg-gray-900 dark:text-gray-400">
-                Phone *
-              </label>
-              <input
-                className="mt-2 h-11 w-full rounded-xl bg-zinc-50 px-4 text-sm font-semibold text-zinc-900 outline-none ring-1 ring-zinc-200 focus:ring-2 focus:ring-orange-300 dark:bg-gray-900 dark:text-zinc-500 dark:ring-zinc-800 dark:focus:ring-gray-700"
-                placeholder="Enter phone number"
-              />
-            </div>
-            <div className="sm:col-span-2">
-              <label className="text-xs font-semibold text-secondary dark:bg-gray-900 dark:text-gray-400">
-                Your Message *
-              </label>
-              <textarea
-                className="mt-2 min-h-28 w-full resize-none rounded-xl bg-zinc-50 px-4 py-3 text-sm font-semibold text-zinc-900 outline-none ring-1 ring-zinc-200 focus:ring-2 focus:ring-orange-300 dark:bg-gray-900 dark:text-zinc-500 dark:ring-zinc-800 dark:focus:ring-gray-700"
-                placeholder="Write here..."
-              />
-            </div>
-          </div>
-
-          <button
-            type="button"
-            className="mt-5 inline-flex h-11 cursor-pointer items-center justify-center rounded-xl bg-primary px-6 text-sm font-extrabold text-white shadow-sm transition hover:bg-secondary"
-          >
-            Send Message
-          </button>
+            <PremiumButton className="inline-flex items-center justify-center rounded-xl px-6 text-sm h-11 font-extrabold text-white mt-5">
+              Send Message
+            </PremiumButton>
+          </form>
         </div>
       </div>
     </section>

@@ -4,6 +4,7 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import ContactSection from "../components/ContactSection";
 import NewsLetterSection from "../components/NewsLetter";
 import SEO from "../components/SEO";
+import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
   const categories = useMemo(
@@ -49,6 +50,7 @@ export default function HomePage() {
   );
 
   const categoriesRef = useRef<HTMLDivElement | null>(null);
+  const businessPhone = import.meta.env.VITE_PHONE;
 
   const scrollCategories = (dir: "prev" | "next") => {
     const el = categoriesRef.current;
@@ -59,6 +61,8 @@ export default function HomePage() {
       behavior: "smooth",
     });
   };
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -91,6 +95,7 @@ export default function HomePage() {
 
               <div className="mt-7 flex flex-row gap-3 items-center mt-1">
                 <button
+                  onClick={() => navigate("/shop")}
                   type="button"
                   className="group inline-flex h-12 items-center justify-center gap-2 rounded-xl 
                   bg-primary px-6 text-sm font-semibold text-white 
@@ -108,6 +113,9 @@ export default function HomePage() {
                 </button>
                 <button
                   type="button"
+                  onClick={() =>
+                    (window.location.href = `tel:${businessPhone}`)
+                  }
                   className="group inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-secondary px-5 text-sm font-semibold text-white transition hover:text-white hover:bg-primary cursor-pointer border border-secondary"
                 >
                   <FontAwesomeIcon

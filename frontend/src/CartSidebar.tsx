@@ -125,6 +125,7 @@ export default function CartSidebar({ isOpen, onClose }: Props) {
                       setTimeout(() => setToast(""), 2000);
                       return;
                     }
+                    onClose();
 
                     navigate("/checkout");
                   }}

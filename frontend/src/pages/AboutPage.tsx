@@ -1,6 +1,8 @@
 import TestimonialSection from "../components/TestimonialSection";
 import { useNavigate } from "react-router-dom";
 import SEO from "../components/SEO";
+import Card from "../components/Card";
+import PremiumButton from "../components/PremiumButton";
 
 export default function AboutPage() {
   const navigate = useNavigate();
@@ -51,13 +53,12 @@ export default function AboutPage() {
             ensures quality, affordability, and fast service every time.
           </p>
 
-          <button
-            type="button"
+          <PremiumButton
+            className="inline-flex items-center justify-center rounded-xl px-6 text-sm h-11 font-extrabold text-white"
             onClick={() => navigate("/contact")}
-            className="mt-5 inline-flex h-11 cursor-pointer items-center justify-center rounded-xl bg-primary px-6 text-sm font-extrabold text-white shadow-sm transition hover:bg-secondary"
           >
             Contact Us
-          </button>
+          </PremiumButton>
         </div>
       </section>
 
@@ -73,8 +74,8 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {/* Card 1 */}
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border dark:border-gray-700">
-              <div className="text-primary items-center justify-center flex">
+            <Card className="text-center">
+              <div className="text-primary flex justify-center mb-3">
                 <svg
                   width="50"
                   height="50"
@@ -87,17 +88,19 @@ export default function AboutPage() {
                   <path d="M9 12l2 2 4-4" />
                 </svg>
               </div>
+
               <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                 Quality Service
               </h4>
+
               <p className="text-gray-600 dark:text-white text-sm">
                 We use premium parts and skilled technicians for every repair.
               </p>
-            </div>
+            </Card>
 
             {/* Card 2 */}
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border dark:border-gray-700">
-              <div className="text-primary items-center justify-center flex">
+            <Card className="text-center">
+              <div className="text-primary flex justify-center mb-3">
                 <svg
                   width="50"
                   height="50"
@@ -112,17 +115,18 @@ export default function AboutPage() {
                   <path d="M8 15c1.5 1 3 1 4 1s2.5 0 4-1" />
                 </svg>
               </div>
+
               <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                 Customer Support
               </h4>
+
               <p className="text-gray-600 dark:text-white text-sm">
                 Friendly support team ready to assist you anytime.
               </p>
-            </div>
-
+            </Card>
             {/* Card 3 */}
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border dark:border-gray-700">
-              <div className="text-primary items-center justify-center flex">
+            <Card className="text-center">
+              <div className="text-primary flex justify-center mb-3">
                 <svg
                   width="50"
                   height="50"
@@ -135,13 +139,15 @@ export default function AboutPage() {
                   <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14.5a3.5 3.5 0 0 1 0 7H6" />
                 </svg>
               </div>
+
               <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                 Affordable Pricing
               </h4>
+
               <p className="text-gray-600 dark:text-white text-sm">
                 Transparent pricing with no hidden charges.
               </p>
-            </div>
+            </Card>
           </div>
         </div>
       </section>

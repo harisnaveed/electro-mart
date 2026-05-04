@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import { useCart } from "../CartContext";
 import { useCartUi } from "../CartUiContext";
 import SEO from "../components/SEO";
-import ProductCard from "../components/ProductCard";
 
 type Product = {
   id: string | number;
@@ -277,10 +276,7 @@ export default function Shop() {
       <div>
         <div className="mb-6 flex flex-col gap-1">
           <p className="text-sm text-zinc-600 dark:text-gray-400">
-            API:{" "}
-            <span className="font-mono text-[13px]">
-              {PRODUCTS_URL} {loading}
-            </span>
+            API: <span className="font-mono text-[13px]">{PRODUCTS_URL}</span>
           </p>
           <p className="text-sm text-zinc-600 dark:text-gray-400">
             Showing{" "}
@@ -384,15 +380,91 @@ export default function Shop() {
           </div>
         ) : (
           <div className="min-h-screen p-6">
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {paginated.map((p) => (
-                <ProductCard
+                <article
                   key={p.id}
-                  product={p}
-                  addToCart={addToCart}
-                  setToast={setToast}
-                  formatPrice={formatPrice}
-                />
+                  className="
+          p-5 rounded-2xl
+          bg-[#e6edf5] dark:bg-[#1e293b]
+          transition-all duration-300
+          
+          /* neumorphism shadow */
+          shadow-[8px_8px_16px_#c8d0d8,-8px_-8px_16px_#ffffff]
+          dark:shadow-[6px_6px_12px_#0f172a,-6px_-6px_12px_#334155]
+
+          hover:shadow-[inset_4px_4px_10px_#c8d0d8,inset_-4px_-4px_10px_#ffffff]
+          dark:hover:shadow-[inset_4px_4px_10px_#020617,inset_-4px_-4px_10px_#1e293b]
+        "
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <h2 className="text-sm font-semibold line-clamp-2">
+                      {p.title}
+                    </h2>
+                    <p className="text-sm font-semibold">
+                      {formatPrice(p.price)}
+                    </p>
+                  </div>
+
+                  {p.category && (
+                    <p className="mt-2 text-xs text-gray-500">{p.category}</p>
+                  )}
+
+                  <div className="mt-3 flex flex-wrap gap-2 text-xs">
+                    {p.manufacturer && (
+                      <span
+                        className="px-2 py-1 rounded-full bg-[#e6edf5] dark:bg-[#1e293b]
+              shadow-[inset_2px_2px_5px_#c8d0d8,inset_-2px_-2px_5px_#ffffff]
+              dark:shadow-[inset_2px_2px_5px_#020617,inset_-2px_-2px_5px_#334155]
+            "
+                      >
+                        {p.manufacturer}
+                      </span>
+                    )}
+
+                    {p.type && (
+                      <span
+                        className="px-2 py-1 rounded-full bg-[#e6edf5] dark:bg-[#1e293b]
+              shadow-[inset_2px_2px_5px_#c8d0d8,inset_-2px_-2px_5px_#ffffff]
+              dark:shadow-[inset_2px_2px_5px_#020617,inset_-2px_-2px_#334155]
+            "
+                      >
+                        {p.type}
+                      </span>
+                    )}
+                  </div>
+
+                  {p.description && (
+                    <p className="mt-3 text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+                      {p.description}
+                    </p>
+                  )}
+
+                  {/* Neumorphic Button */}
+                  <button
+                    onClick={() => {
+                      addToCart(p);
+                      setToast(`${p.title} added to cart`);
+                      setTimeout(() => setToast(""), 2000);
+                    }}
+                    className="
+            mt-4 w-full py-2 rounded-full text-sm font-medium
+            bg-[#e6edf5] dark:bg-[#1e293b]
+
+            shadow-[6px_6px_12px_#c8d0d8,-6px_-6px_12px_#ffffff]
+            dark:shadow-[4px_4px_10px_#020617,-4px_-4px_10px_#334155]
+
+            active:shadow-[inset_4px_4px_10px_#c8d0d8,inset_-4px_-4px_10px_#ffffff]
+            dark:active:shadow-[inset_4px_4px_10px_#020617,inset_-4px_-4px_10px_#334155]
+
+            transition-all duration-200
+
+            cursor-pointer
+          "
+                  >
+                    🛒 Add to cart
+                  </button>
+                </article>
               ))}
             </div>
           </div>

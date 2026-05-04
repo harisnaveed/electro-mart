@@ -17,8 +17,8 @@ export default function SEO({
   image = "https://yourdomain.com/preview.jpg",
   noIndex = false,
 }: SEOProps) {
-  const domain = import.meta.env.VITE_DOMAIN;
-  const url = `${domain.replace(/\/$/, "")}/${page.replace(/^\//, "")}`;
+  const cleanPage = page?.replace(/^\/+/, "") || "";
+  const url = `${window.location.origin}/${cleanPage}`;
   return (
     <Helmet>
       {/* Basic SEO */}
