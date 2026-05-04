@@ -1,0 +1,66 @@
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import ThemeToggle from "./ThemeToggle";
+
+export default function FloatingPanel() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      {/* ⚙️ Floating Gear Button */}
+      <button
+        onClick={() => setOpen((prev) => !prev)}
+        className="
+          fixed right-0 top-1/2 -translate-y-1/2 z-50
+          h-14 w-14 flex items-center justify-center
+          rounded-l-2xl
+          bg-gradient-to-r from-purple-500 to-orange-400
+          text-white shadow-lg
+        "
+      >
+        <span className="text-xl animate-spin-slow hover:animate-none">⚙️</span>
+      </button>
+
+      {/* 🧲 Slide Panel */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ x: 120, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: 120, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            className="
+              fixed right-0 top-1/2 -translate-y-1/2 z-40
+              w-64 p-4 rounded-l-2xl
+              
+              backdrop-blur-xl bg-white/70 dark:bg-gray-900/80
+              border border-white/30 dark:border-gray-700
+              
+              shadow-[0_10px_30px_rgba(0,0,0,0.25)]
+            "
+          >
+            <h4 className="font-semibold mb-4 text-gray-800 dark:text-white">
+              Settings
+            </h4>
+
+            {/* 🌙 Dark Mode Toggle */}
+            <ThemeToggle />
+
+            {/* 🔗 Social Icons */}
+            <div className="flex gap-2">
+              <button className="flex-1 p-2 rounded-lg bg-gray-100 dark:bg-gray-800">
+                🌐
+              </button>
+              <button className="flex-1 p-2 rounded-lg bg-gray-100 dark:bg-gray-800">
+                📘
+              </button>
+              <button className="flex-1 p-2 rounded-lg bg-gray-100 dark:bg-gray-800">
+                📸
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}

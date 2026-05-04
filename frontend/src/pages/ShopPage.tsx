@@ -3,6 +3,7 @@ import { useCart } from "../CartContext";
 import { useCartUi } from "../CartUiContext";
 import SEO from "../components/SEO";
 import ProductCard from "../components/ProductCard";
+import PremiumToast from "../components/PremiumToast";
 
 type Product = {
   id: string | number;
@@ -294,11 +295,7 @@ export default function Shop() {
           </p>
         </div>
 
-        {toast && (
-          <div className="fixed bottom-20 right-5 bg-black dark:bg-primary text-white px-4 py-2 rounded-lg shadow-lg text-sm z-50">
-            {toast}
-          </div>
-        )}
+        {toast && <PremiumToast message={toast} />}
 
         <div className="mb-6 grid grid-cols-1 gap-3 md:grid-cols-3">
           <div className="relative w-full md:col-span-1">

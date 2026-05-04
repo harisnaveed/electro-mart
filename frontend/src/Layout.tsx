@@ -4,6 +4,7 @@ import Header from "./header";
 import Footer from "./footer";
 import CartSidebar from "./CartSidebar";
 import { CartUiProvider } from "./CartUiContext";
+import FloatingPanel from "./components/FloatingPanel";
 
 export default function Layout() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -26,6 +27,7 @@ export default function Layout() {
         </main>
         <Footer />
         <CartSidebar isOpen={isCartOpen} onClose={closeCart} />
+        <FloatingPanel />
       </div>
     </CartUiProvider>
   );
