@@ -7,13 +7,8 @@ import {
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-import {
-  faFacebookF,
-  faTwitter,
-  faInstagram,
-  faLinkedinIn,
-} from "@fortawesome/free-brands-svg-icons";
 import MapComponent from "./components/MapComponent";
+import SocialIcons from "./components/SocialIcons";
 
 export default function Footer() {
   const navItems = [
@@ -129,21 +124,7 @@ export default function Footer() {
           </p>
 
           {/* Social Icons */}
-          <div className="flex gap-4 justify-center">
-            {[faFacebookF, faTwitter, faInstagram, faLinkedinIn].map(
-              (icon, i) => (
-                <div
-                  key={i}
-                  className="group w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-primary transition cursor-pointer"
-                >
-                  <FontAwesomeIcon
-                    icon={icon}
-                    className="text-gray-600 group-hover:text-white dark:text-gray-900"
-                  />
-                </div>
-              ),
-            )}
-          </div>
+          <SocialIcons />
         </div>
       </div>
     </footer>

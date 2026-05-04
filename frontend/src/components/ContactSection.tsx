@@ -1,10 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebookF,
-  faTwitter,
-  faInstagram,
-  faLinkedinIn,
-} from "@fortawesome/free-brands-svg-icons";
+import SocialIcons from "./SocialIcons";
 import InputField from "./InputField";
 import TextareaField from "./TextareaField";
 import PremiumButton from "./PremiumButton";
@@ -31,7 +26,7 @@ function ContactSection() {
   return (
     <section className="mt-10 dark:bg-gray-900 dark:text-white mb-5">
       <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
-        <div className="relative overflow-hidden rounded-3xl bg-[#0B1A3A] p-7 text-white shadow-[0_20px_50px_rgba(2,6,23,0.25)] dark:bg-gray-900 dark:text-white">
+        <div className="relative overflow-hidden rounded-3xl bg-gray-800 p-7 text-white shadow-[0_20px_50px_rgba(2,6,23,0.25)] dark:bg-gray-900 dark:text-white">
           <div className="pointer-events-none absolute inset-0 opacity-20">
             <div className="absolute -left-20 -top-24 h-64 w-64 rounded-full bg-white/20 blur-3xl" />
             <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
@@ -62,23 +57,7 @@ function ContactSection() {
             <div className="mt-7 text-sm font-semibold text-white/80 dark:text-gray-400">
               Stay Connected
             </div>
-            <div className="mt-3 flex items-center gap-3">
-              {[faFacebookF, faTwitter, faInstagram, faLinkedinIn].map(
-                (icon, i) => (
-                  <button
-                    key={i}
-                    type="button"
-                    className="grid h-10 w-10 cursor-pointer place-items-center rounded-full bg-white/10 dark:bg-gray-700 text-sm font-extrabold text-white dark:text-gray-900 hover:text-white ring-1 ring-white/15 transition hover:bg-primary/25 hover:ring-primary/40"
-                    aria-label="Social"
-                  >
-                    <FontAwesomeIcon
-                      icon={icon}
-                      className="text-gray-600 group-hover:text-white dark:text-gray-900"
-                    />
-                  </button>
-                ),
-              )}
-            </div>
+            <SocialIcons />
           </div>
         </div>
 
