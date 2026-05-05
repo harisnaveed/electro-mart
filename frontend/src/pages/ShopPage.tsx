@@ -380,7 +380,7 @@ export default function Shop() {
             ))}
           </div>
         ) : (
-          <div className="min-h-screen p-6">
+          <div className="p-6">
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {paginated.map((p) => (
                 <ProductCard

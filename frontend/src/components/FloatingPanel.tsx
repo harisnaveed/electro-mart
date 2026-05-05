@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
+import SocialIcons from "./SocialIcons";
 
 export default function FloatingPanel() {
   const [open, setOpen] = useState(false);
@@ -13,9 +14,10 @@ export default function FloatingPanel() {
         className="
     fixed left-4 bottom-6 z-50
     h-14 w-14 flex items-center justify-center
-    rounded-2xl   /* 👈 no more left-only rounding */
+    rounded-2xl
     bg-gradient-to-r from-purple-500 to-orange-400
     text-white shadow-lg
+    cursor-pointer
   "
       >
         <span className="text-xl animate-spin-slow hover:animate-none">⚙️</span>
@@ -45,19 +47,9 @@ export default function FloatingPanel() {
 
             {/* 🌙 Dark Mode Toggle */}
             <ThemeToggle />
-
-            {/* 🔗 Social Icons */}
-            <div className="flex gap-2">
-              <button className="flex-1 p-2 rounded-lg bg-gray-100 dark:bg-gray-800">
-                🌐
-              </button>
-              <button className="flex-1 p-2 rounded-lg bg-gray-100 dark:bg-gray-800">
-                📘
-              </button>
-              <button className="flex-1 p-2 rounded-lg bg-gray-100 dark:bg-gray-800">
-                📸
-              </button>
-            </div>
+            <div className="mt-2"></div>
+            {/* Social Icons */}
+            <SocialIcons className={"!h-11 !w-12"} />
           </motion.div>
         )}
       </AnimatePresence>

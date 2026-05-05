@@ -4,6 +4,9 @@ import "swiper/css/pagination";
 
 import { Pagination } from "swiper/modules";
 import Card from "./Card";
+import { CardStars } from "./Card/CardStars";
+import { CardText } from "./Card/CardText";
+import { CardUser } from "./Card/CardUser";
 
 export default function TestimonialSection() {
   const testimonials = [
@@ -12,30 +15,35 @@ export default function TestimonialSection() {
       role: "iPhone User",
       image: "https://randomuser.me/api/portraits/men/32.jpg",
       text: "Got my iPhone screen replaced within an hour. Excellent service.",
+      stars: 5,
     },
     {
       name: "Haris Naveed",
       role: "Laptop Repair",
       image: "https://randomuser.me/api/portraits/men/45.jpg",
       text: "Motherboard issue fixed perfectly. Highly recommended!",
+      stars: 3,
     },
     {
       name: "Ahmed Raza",
       role: "Android User",
       image: "https://randomuser.me/api/portraits/men/12.jpg",
       text: "Battery replacement was quick and affordable.",
+      stars: 2,
     },
     {
       name: "Sara Ahmed",
       role: "Customer",
       image: "https://randomuser.me/api/portraits/women/50.jpg",
       text: "Friendly support and transparent pricing.",
+      stars: 4,
     },
     {
       name: "Usman Tariq",
       role: "Gaming Laptop",
       image: "https://randomuser.me/api/portraits/men/60.jpg",
       text: "Laptop performance improved significantly after service.",
+      stars: 1,
     },
   ];
 
@@ -61,33 +69,10 @@ export default function TestimonialSection() {
         >
           {testimonials.map((t, i) => (
             <SwiperSlide key={i}>
-              <Card className="h-auto lg:h-[200px]">
-                {/* Stars */}
-                <div className="flex text-primary text-sm mb-3">
-                  {"★★★★★".split("").map((_, i) => (
-                    <span key={i}>★</span>
-                  ))}
-                </div>
-
-                {/* Text */}
-                <p className="text-gray-600 dark:text-white text-sm mb-4">
-                  “{t.text}”
-                </p>
-
-                {/* User */}
-                <div className="flex items-center gap-3 mt-auto">
-                  <img
-                    src={t.image}
-                    alt={t.name}
-                    className="w-10 h-10 rounded-full"
-                  />
-                  <div>
-                    <h4 className="text-sm font-semibold text-gray-900 dark:text-white">
-                      {t.name}
-                    </h4>
-                    <p className="text-xs text-gray-500">{t.role}</p>
-                  </div>
-                </div>
+              <Card className="h-auto lg:h-[200px] cursor-pointer">
+                <CardStars count={t.stars} />
+                <CardText>“{t.text}”</CardText>
+                <CardUser image={t.image} name={t.name} role={t.role} />
               </Card>
             </SwiperSlide>
           ))}

@@ -42,7 +42,7 @@ export default function ThemeToggle() {
       <button
         onClick={toggleDark}
         className={`
-          relative w-12 h-6 rounded-full transition
+          relative w-12 h-6 rounded-full transition cursor-pointer
           ${dark ? "bg-purple-500" : "bg-gray-300"}
         `}
       >

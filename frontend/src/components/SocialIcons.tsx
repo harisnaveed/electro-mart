@@ -6,7 +6,11 @@ import {
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
 
-export default function SocialIcons() {
+type Props = {
+  className?: string;
+};
+
+export default function SocialIcons({ className = "" }: Props) {
   const icons = [
     {
       icon: faFacebookF,
@@ -35,7 +39,7 @@ export default function SocialIcons() {
       {icons.map((item, i) => (
         <div
           key={i}
-          className="
+          className={`
             group w-12 h-12 flex items-center justify-center
             rounded-full cursor-pointer
             
@@ -52,7 +56,8 @@ export default function SocialIcons() {
             
             hover:-translate-y-1
             active:scale-95
-          "
+            ${className}  /* 👈 override */
+         `}
         >
           <FontAwesomeIcon
             icon={item.icon}

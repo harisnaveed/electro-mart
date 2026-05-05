@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import SEO from "../components/SEO";
 import Card from "../components/Card";
 import PremiumButton from "../components/PremiumButton";
+import { CardIcon } from "../components/Card/CardIcon";
+import { CardTitle } from "../components/Card/CardTitle";
+import { CardText } from "../components/Card/CardText";
 
 export default function AboutPage() {
   const navigate = useNavigate();
@@ -75,7 +78,7 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-3 gap-6">
             {/* Card 1 */}
             <Card className="text-center">
-              <div className="text-primary flex justify-center mb-3">
+              <CardIcon>
                 <svg
                   width="50"
                   height="50"
@@ -87,20 +90,16 @@ export default function AboutPage() {
                   <path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z" />
                   <path d="M9 12l2 2 4-4" />
                 </svg>
-              </div>
-
-              <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
-                Quality Service
-              </h4>
-
-              <p className="text-gray-600 dark:text-white text-sm">
+              </CardIcon>
+              <CardTitle>Quality Service</CardTitle>
+              <CardText>
                 We use premium parts and skilled technicians for every repair.
-              </p>
+              </CardText>
             </Card>
 
             {/* Card 2 */}
             <Card className="text-center">
-              <div className="text-primary flex justify-center mb-3">
+              <CardIcon>
                 <svg
                   width="50"
                   height="50"
@@ -114,39 +113,26 @@ export default function AboutPage() {
                   <circle cx="15" cy="10" r="1" fill="currentColor" />
                   <path d="M8 15c1.5 1 3 1 4 1s2.5 0 4-1" />
                 </svg>
-              </div>
-
-              <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
-                Customer Support
-              </h4>
-
-              <p className="text-gray-600 dark:text-white text-sm">
+              </CardIcon>
+              <CardTitle>Customer Support</CardTitle>
+              <CardText>
                 Friendly support team ready to assist you anytime.
-              </p>
+              </CardText>
             </Card>
             {/* Card 3 */}
             <Card className="text-center">
-              <div className="text-primary flex justify-center mb-3">
-                <svg
-                  width="50"
-                  height="50"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="M12 2v20" />
-                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14.5a3.5 3.5 0 0 1 0 7H6" />
+              <CardIcon>
+                <svg width="50" height="50" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2v20" stroke="currentColor" strokeWidth="2" />
+                  <path
+                    d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14.5a3.5 3.5 0 0 1 0 7H6"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
                 </svg>
-              </div>
-
-              <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
-                Affordable Pricing
-              </h4>
-
-              <p className="text-gray-600 dark:text-white text-sm">
-                Transparent pricing with no hidden charges.
-              </p>
+              </CardIcon>
+              <CardTitle>Affordable Pricing</CardTitle>
+              <CardText>Transparent pricing with no hidden charges.</CardText>
             </Card>
           </div>
         </div>
